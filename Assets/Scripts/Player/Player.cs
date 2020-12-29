@@ -8,6 +8,7 @@ namespace Player
         private void Awake()
         {
             Debug.Log("First Commit!");
+            Debug.Log("Second Commit!");
         }
 
     }
