@@ -9,6 +9,7 @@ namespace Player
         {
             Debug.Log("First Commit!");
             Debug.Log("Second Commit!");
+            Debug.Log("Terceiro Commit!");
         }
 
     }
