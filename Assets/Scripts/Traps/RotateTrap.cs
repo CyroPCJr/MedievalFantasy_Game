@@ -28,7 +28,7 @@ public class RotateTrap : MonoBehaviour
             animator.SetBool("IsActive", true);
             if (ActivationEnd)
             {
-                transform.Rotate(0, RotateSpeed, 0, Space.Self);
+                transform.Rotate(0, RotateSpeed *Time.deltaTime, 0, Space.Self);
             }
         }
         else
