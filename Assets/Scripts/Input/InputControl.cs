@@ -81,6 +81,14 @@ public class @InputControl : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""0edde680-bf12-4f42-9a31-3fd3067d5b6e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -446,6 +454,28 @@ public class @InputControl : IInputActionCollection, IDisposable
                     ""action"": ""MouseControlCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df4d9dec-dcbe-44da-9712-7ab89ce17737"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c775f524-423f-4080-90e3-e064f0494fb0"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -495,6 +525,7 @@ public class @InputControl : IInputActionCollection, IDisposable
         m_Gameplay_Skill_2 = m_Gameplay.FindAction("Skill_2", throwIfNotFound: true);
         m_Gameplay_RotateCamera = m_Gameplay.FindAction("RotateCamera", throwIfNotFound: true);
         m_Gameplay_MouseControlCamera = m_Gameplay.FindAction("MouseControlCamera", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
@@ -555,6 +586,7 @@ public class @InputControl : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Skill_2;
     private readonly InputAction m_Gameplay_RotateCamera;
     private readonly InputAction m_Gameplay_MouseControlCamera;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @InputControl m_Wrapper;
@@ -567,6 +599,7 @@ public class @InputControl : IInputActionCollection, IDisposable
         public InputAction @Skill_2 => m_Wrapper.m_Gameplay_Skill_2;
         public InputAction @RotateCamera => m_Wrapper.m_Gameplay_RotateCamera;
         public InputAction @MouseControlCamera => m_Wrapper.m_Gameplay_MouseControlCamera;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -600,6 +633,9 @@ public class @InputControl : IInputActionCollection, IDisposable
                 @MouseControlCamera.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseControlCamera;
                 @MouseControlCamera.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseControlCamera;
                 @MouseControlCamera.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseControlCamera;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -628,6 +664,9 @@ public class @InputControl : IInputActionCollection, IDisposable
                 @MouseControlCamera.started += instance.OnMouseControlCamera;
                 @MouseControlCamera.performed += instance.OnMouseControlCamera;
                 @MouseControlCamera.canceled += instance.OnMouseControlCamera;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -684,6 +723,7 @@ public class @InputControl : IInputActionCollection, IDisposable
         void OnSkill_2(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnMouseControlCamera(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
