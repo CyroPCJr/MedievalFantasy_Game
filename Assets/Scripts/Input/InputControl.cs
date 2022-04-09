@@ -24,17 +24,17 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
     ""name"": ""InputControl"",
     ""maps"": [
         {
-            ""name"": ""Gameplay"",
+            ""name"": ""Player"",
             ""id"": ""7cb8e380-1857-4024-a9d2-3351a3701216"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
                     ""id"": ""c0e646ed-ea64-45fa-9ac9-2fd11f1aafb7"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Jump"",
@@ -107,6 +107,15 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""247cea19-2ac5-4313-849d-7edd9826f369"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -117,7 +126,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -128,7 +137,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -139,7 +148,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -150,7 +159,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -161,7 +170,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -172,7 +181,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -183,7 +192,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -194,7 +203,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -205,7 +214,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -216,7 +225,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -227,7 +236,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -238,7 +247,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -249,7 +258,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -260,7 +269,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -271,7 +280,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardOrGamepad"",
-                    ""action"": ""Move"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -494,6 +503,17 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3684da0-b4ef-4044-ae0a-2479e3f36828"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardOrGamepad"",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -534,17 +554,18 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
         }
     ]
 }");
-        // Gameplay
-        m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
-        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
-        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
-        m_Gameplay_Skill_1 = m_Gameplay.FindAction("Skill_1", throwIfNotFound: true);
-        m_Gameplay_Skill_2 = m_Gameplay.FindAction("Skill_2", throwIfNotFound: true);
-        m_Gameplay_RotateCamera = m_Gameplay.FindAction("RotateCamera", throwIfNotFound: true);
-        m_Gameplay_MouseControlCamera = m_Gameplay.FindAction("MouseControlCamera", throwIfNotFound: true);
-        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
+        // Player
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Skill_1 = m_Player.FindAction("Skill_1", throwIfNotFound: true);
+        m_Player_Skill_2 = m_Player.FindAction("Skill_2", throwIfNotFound: true);
+        m_Player_RotateCamera = m_Player.FindAction("RotateCamera", throwIfNotFound: true);
+        m_Player_MouseControlCamera = m_Player.FindAction("MouseControlCamera", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
@@ -604,74 +625,79 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // Gameplay
-    private readonly InputActionMap m_Gameplay;
-    private IGameplayActions m_GameplayActionsCallbackInterface;
-    private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Jump;
-    private readonly InputAction m_Gameplay_Attack;
-    private readonly InputAction m_Gameplay_Pause;
-    private readonly InputAction m_Gameplay_Skill_1;
-    private readonly InputAction m_Gameplay_Skill_2;
-    private readonly InputAction m_Gameplay_RotateCamera;
-    private readonly InputAction m_Gameplay_MouseControlCamera;
-    private readonly InputAction m_Gameplay_Interact;
-    public struct GameplayActions
+    // Player
+    private readonly InputActionMap m_Player;
+    private IPlayerActions m_PlayerActionsCallbackInterface;
+    private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Skill_1;
+    private readonly InputAction m_Player_Skill_2;
+    private readonly InputAction m_Player_RotateCamera;
+    private readonly InputAction m_Player_MouseControlCamera;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Run;
+    public struct PlayerActions
     {
         private @InputControl m_Wrapper;
-        public GameplayActions(@InputControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
-        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
-        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
-        public InputAction @Skill_1 => m_Wrapper.m_Gameplay_Skill_1;
-        public InputAction @Skill_2 => m_Wrapper.m_Gameplay_Skill_2;
-        public InputAction @RotateCamera => m_Wrapper.m_Gameplay_RotateCamera;
-        public InputAction @MouseControlCamera => m_Wrapper.m_Gameplay_MouseControlCamera;
-        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
-        public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
+        public PlayerActions(@InputControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Skill_1 => m_Wrapper.m_Player_Skill_1;
+        public InputAction @Skill_2 => m_Wrapper.m_Player_Skill_2;
+        public InputAction @RotateCamera => m_Wrapper.m_Player_RotateCamera;
+        public InputAction @MouseControlCamera => m_Wrapper.m_Player_MouseControlCamera;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(GameplayActions set) { return set.Get(); }
-        public void SetCallbacks(IGameplayActions instance)
+        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
+        public void SetCallbacks(IPlayerActions instance)
         {
-            if (m_Wrapper.m_GameplayActionsCallbackInterface != null)
+            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Attack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                @Attack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                @Attack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAttack;
-                @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
-                @Skill_1.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_1;
-                @Skill_1.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_1;
-                @Skill_1.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_1;
-                @Skill_2.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_2;
-                @Skill_2.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_2;
-                @Skill_2.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSkill_2;
-                @RotateCamera.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotateCamera;
-                @RotateCamera.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotateCamera;
-                @RotateCamera.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotateCamera;
-                @MouseControlCamera.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseControlCamera;
-                @MouseControlCamera.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseControlCamera;
-                @MouseControlCamera.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMouseControlCamera;
-                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Skill_1.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill_1;
+                @Skill_1.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill_1;
+                @Skill_1.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill_1;
+                @Skill_2.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill_2;
+                @Skill_2.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill_2;
+                @Skill_2.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSkill_2;
+                @RotateCamera.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateCamera;
+                @RotateCamera.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRotateCamera;
+                @MouseControlCamera.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseControlCamera;
+                @MouseControlCamera.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseControlCamera;
+                @MouseControlCamera.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouseControlCamera;
+                @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
             }
-            m_Wrapper.m_GameplayActionsCallbackInterface = instance;
+            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Move.started += instance.OnMove;
-                @Move.performed += instance.OnMove;
-                @Move.canceled += instance.OnMove;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -696,10 +722,13 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
         }
     }
-    public GameplayActions @Gameplay => new GameplayActions(this);
+    public PlayerActions @Player => new PlayerActions(this);
 
     // Menu
     private readonly InputActionMap m_Menu;
@@ -742,9 +771,9 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_KeyboardOrGamepadSchemeIndex];
         }
     }
-    public interface IGameplayActions
+    public interface IPlayerActions
     {
-        void OnMove(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
@@ -753,6 +782,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnMouseControlCamera(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

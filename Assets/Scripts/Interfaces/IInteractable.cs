@@ -1,9 +1,9 @@
-namespace Interfaces
-{
-    public interface IInteractable
-    {
-        void Interact(Player.Player player);
-    }
+// namespace Interfaces
+// {
+//     public interface IInteractable
+//     {
+//         void Interact(Player.Player player);
+//     }
 
-}
+// }
 
