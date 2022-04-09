@@ -11,7 +11,8 @@
                     "id": "c0e646ed-ea64-45fa-9ac9-2fd11f1aafb7",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "346db534-3bc3-49ee-9e03-f9c2c2c98b85",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Attack",
@@ -27,7 +29,8 @@
                     "id": "27b038f3-e914-4442-b203-b718486f290e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Pause",
@@ -35,7 +38,8 @@
                     "id": "ed2d8222-be06-4a9c-ada0-616c1e456d43",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_1",
@@ -43,7 +47,8 @@
                     "id": "42caf9d0-810d-4d5c-8b01-d0e2c8e6b934",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_2",
@@ -51,7 +56,8 @@
                     "id": "1be84a59-309a-47e0-b421-2643d2f4dc3d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "RotateCamera",
@@ -59,7 +65,8 @@
                     "id": "64e8e379-c7d4-4504-9449-6abee6e56f1f",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MouseControlCamera",
@@ -67,7 +74,8 @@
                     "id": "efb00ce6-7676-4479-928f-66c6a39c0e00",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Interact",
@@ -75,7 +83,8 @@
                     "id": "0edde680-bf12-4f42-9a31-3fd3067d5b6e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -476,7 +485,8 @@
                     "id": "01774897-b39d-487a-8f11-f63cbd49c434",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
