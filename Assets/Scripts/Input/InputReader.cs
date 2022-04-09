@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class InputReader : ScriptableObject, InputControl.IGameplayActions
 {
     public event UnityAction<Vector2> MoveEvent;
+    public event UnityAction InteractEvent;
     public event UnityAction JumpEvent;
     public event UnityAction AttackEvent;
     public event UnityAction Skill1Event;
@@ -94,4 +95,13 @@ public class InputReader : ScriptableObject, InputControl.IGameplayActions
             DisableMouseControlCameraEvent?.Invoke();
         }
     }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            InteractEvent?.Invoke();
+        }
+    }
+
 }

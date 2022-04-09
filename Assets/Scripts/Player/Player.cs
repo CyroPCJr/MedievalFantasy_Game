@@ -1,3 +1,4 @@
+using Interfaces;
 using System;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ namespace Player
 
         private void OnEnable()
         {
+            _inputReader.InteractEvent += OnInteract;
             _inputReader.MoveEvent += OnMove;
             _inputReader.JumpEvent += OnJump;
             _inputReader.AttackEvent += OnAttack;
@@ -44,10 +46,9 @@ namespace Player
             _inputReader.Skill2Event += OnSkill_2;
         }
 
-
-
         private void OnDisable()
         {
+            _inputReader.InteractEvent -= OnInteract;
             _inputReader.MoveEvent -= OnMove;
             _inputReader.JumpEvent -= OnJump;
             _inputReader.AttackEvent -= OnAttack;
@@ -121,6 +122,29 @@ namespace Player
         private void OnSkill_2()
         {
             Debug.Log("Skill 2 Event");
+        }
+        
+        private bool interact = false;
+        private void OnInteract()
+        {
+            Collider[] colliders = Physics.OverlapSphere(_transform.position, 5.0f, _playerDataSO.layerMask);
+            foreach (var collider in colliders)
+            {
+                IInteractable iter = collider.GetComponent<IInteractable>();
+                if (iter != null)
+                {
+                    interact = true;
+                    iter.Interact(this);
+                }
+            }
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (interact)
+            {
+                Gizmos.DrawWireSphere(_transform.position, 5f);
+            }
         }
 
     }
