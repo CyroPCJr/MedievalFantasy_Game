@@ -1,14 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace FSM
+namespace MedievalFantasyGame.FSM
 {
     public class PlayerStateMachine : MonoBehaviour
     {
         private InputControl _playerInputActions;
         private CharacterController _characterController;
         private Animator _animatorController;
-
         private Vector2 _currentMovementInput = Vector2.zero;
         private Vector3 _currentMovement = Vector3.zero;
         private Vector3 _currentRunMovement = Vector3.zero;
@@ -21,13 +20,13 @@ namespace FSM
         private int _walkingAniHash = 0;
         private int _runningAniHash = 0;
         private int _jumpingAniHash = 0;
+        private int _fallingAniHash = 0;
 
         private const float _rotationPerFrame = 15.0f;
         private const float _runMultiplier = 4.0f;
 
         // Gravity variables
-        private float _gravity = -9.8f;
-        private float _groundGravity = -0.05f;
+        private float _gravity = -9.81f;
 
         //Jump variable
         private float _initialJumpVelocity = 0.0f;
@@ -49,6 +48,7 @@ namespace FSM
         public int JumpingHash { get { return _jumpingAniHash; } }
         public int RunningHash { get { return _runningAniHash; } }
         public int WalkingHash { get { return _walkingAniHash; } }
+        public int FallingHash => _fallingAniHash;
         public bool IsJumpingPressed { get { return _isJumpPressed; } }
         public bool IsMovementPressed { get { return _isMovementPressed; } }
         public bool IsRunPressed { get { return _isRunPressed; } }
@@ -58,7 +58,6 @@ namespace FSM
         public float AppliedMovementZ { get { return _appliedMovement.z; } set { _appliedMovement.z = value; } }
         public float RunMultiplier { get { return _runMultiplier; } }
         public float InitialJumpVelocity { get { return _initialJumpVelocity; } }
-        public float GroundGravity { get { return _groundGravity; } }
         public float Gravity { get { return _gravity; } }
         public Vector2 CurrentMovementInput { get { return _currentMovementInput; } }
 
@@ -78,6 +77,7 @@ namespace FSM
             _walkingAniHash = Animator.StringToHash("isWalking");
             _runningAniHash = Animator.StringToHash("isRunning");
             _jumpingAniHash = Animator.StringToHash("isJumping");
+            _fallingAniHash = Animator.StringToHash("isFalling");
 
             // Input Actions
             _playerInputActions.Player.Movement.started += OnMovement;
@@ -91,6 +91,11 @@ namespace FSM
             _playerInputActions.Player.Jump.canceled += OnJump;
 
             setJumpVariables();
+        }
+
+        private void Start()
+        {
+            _characterController.Move(Time.deltaTime * _appliedMovement);
         }
 
         private void OnEnable()

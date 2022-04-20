@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FSM
+namespace MedievalFantasyGame.FSM
 {
-    public class PlayerJumpState : PlayerBaseState
+    public class PlayerJumpState : PlayerBaseState, IRootState
     {
         public PlayerJumpState(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         {
             IsRootState = true;
-            InitializeSubState();
+            
         }
 
         public override void EnterState()
         {
+            InitializeSubState();
             HandleJump();
         }
 
         public override void UpdateState()
         {
-            CheckSwitchState();
             HandleGravity();
+            CheckSwitchState();
         }
 
         public override void ExitState()
@@ -59,7 +60,7 @@ namespace FSM
             Ctx.AppliedMovementY = Ctx.InitialJumpVelocity;
         }
 
-        private void HandleGravity()
+        public void HandleGravity()
         {
             bool isFalling = Ctx.CurrentMovementY <= 0.0f || !Ctx.IsJumpingPressed;
             float fallingMultiplier = 2.0f;

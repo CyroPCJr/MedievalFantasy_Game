@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FSM
+namespace MedievalFantasyGame.FSM
 {
     public class PlayerWalkState : PlayerBaseState
     {
@@ -18,9 +18,9 @@ namespace FSM
 
         public override void UpdateState()
         {
-            CheckSwitchState();
             Ctx.AppliedMovementX = Ctx.CurrentMovementInput.x;
             Ctx.AppliedMovementZ = Ctx.CurrentMovementInput.y;
+            CheckSwitchState();
         }
 
         public override void ExitState() { }

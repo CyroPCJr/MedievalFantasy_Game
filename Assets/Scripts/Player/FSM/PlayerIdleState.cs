@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace FSM
+namespace MedievalFantasyGame.FSM
 {
     public class PlayerIdleState : PlayerBaseState
     {
-        //TODO: arruamar esses substates aqui
         public PlayerIdleState(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         { }
 

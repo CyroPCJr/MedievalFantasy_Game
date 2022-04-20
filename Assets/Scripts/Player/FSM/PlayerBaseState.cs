@@ -1,4 +1,4 @@
-namespace FSM
+namespace MedievalFantasyGame.FSM
 {
 
     public abstract class PlayerBaseState

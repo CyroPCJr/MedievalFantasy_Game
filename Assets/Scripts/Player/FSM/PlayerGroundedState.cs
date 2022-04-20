@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace FSM
+namespace MedievalFantasyGame.FSM
 {
-    public class PlayerGroundedState : PlayerBaseState
+    public class PlayerGroundedState : PlayerBaseState, IRootState
     {
 
         public PlayerGroundedState(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         {
             IsRootState = true;
-            InitializeSubState();
+            
         }
 
 
         public override void EnterState()
         {
-            Ctx.CurrentMovementY = Ctx.GroundGravity;
-            Ctx.AppliedMovementY = Ctx.GroundGravity;
+            InitializeSubState();
+            HandleGravity();
         }
 
         public override void UpdateState()
@@ -33,6 +33,9 @@ namespace FSM
             if (Ctx.IsJumpingPressed)
             {
                 SwitchState(Factory.Jump());
+            }else if (!Ctx.CharacterController.isGrounded)
+            {
+                SwitchState(Factory.Fall());
             }
         }
 
@@ -50,6 +53,12 @@ namespace FSM
             {
                 SetSubStates(Factory.Run());
             }
+        }
+
+        public void HandleGravity()
+        {
+            Ctx.CurrentMovementY = Ctx.Gravity;
+            Ctx.AppliedMovementY = Ctx.Gravity;
         }
     }
 
