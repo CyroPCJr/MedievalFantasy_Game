@@ -15,12 +15,14 @@ namespace MedievalFantasyGame.FSM
         private bool _isMovementPressed = false;
         private bool _isRunPressed = false;
         private bool _isJumpPressed = false;
+        private bool _isSprintForwardRollPressed = false;
 
         // string hashes
         private int _walkingAniHash = 0;
         private int _runningAniHash = 0;
         private int _jumpingAniHash = 0;
         private int _fallingAniHash = 0;
+        private int _sprintFowardRollAniHash = 0;
 
         private const float _rotationPerFrame = 15.0f;
         private const float _runMultiplier = 4.0f;
@@ -47,11 +49,13 @@ namespace MedievalFantasyGame.FSM
         public Animator Animator { get { return _animatorController; } }
         public int JumpingHash { get { return _jumpingAniHash; } }
         public int RunningHash { get { return _runningAniHash; } }
-        public int WalkingHash { get { return _walkingAniHash; } }
+        public int WalkingHash { get { return _walkingAniHash; } }       
         public int FallingHash => _fallingAniHash;
+        public int SprintForwardRollhash => _sprintFowardRollAniHash;
         public bool IsJumpingPressed { get { return _isJumpPressed; } }
         public bool IsMovementPressed { get { return _isMovementPressed; } }
         public bool IsRunPressed { get { return _isRunPressed; } }
+        public bool IsSprintForwardRollPressed => _isSprintForwardRollPressed;
         public float CurrentMovementY { get { return _currentMovement.y; } set { _currentMovement.y = value; } }
         public float AppliedMovementY { get { return _appliedMovement.y; } set { _appliedMovement.y = value; } }
         public float AppliedMovementX { get { return _appliedMovement.x; } set { _appliedMovement.x = value; } }
@@ -78,6 +82,7 @@ namespace MedievalFantasyGame.FSM
             _runningAniHash = Animator.StringToHash("isRunning");
             _jumpingAniHash = Animator.StringToHash("isJumping");
             _fallingAniHash = Animator.StringToHash("isFalling");
+            _sprintFowardRollAniHash = Animator.StringToHash("isSprintForwardRoll");
 
             // Input Actions
             _playerInputActions.Player.Movement.started += OnMovement;
@@ -89,6 +94,9 @@ namespace MedievalFantasyGame.FSM
 
             _playerInputActions.Player.Jump.started += OnJump;
             _playerInputActions.Player.Jump.canceled += OnJump;
+
+            _playerInputActions.Player.SprintForwardRoll.started += OnForwardRoll;
+            _playerInputActions.Player.SprintForwardRoll.canceled += OnForwardRoll;
 
             setJumpVariables();
         }
@@ -135,6 +143,11 @@ namespace MedievalFantasyGame.FSM
             _currentRunMovement.x = _currentMovementInput.x * _runMultiplier;
             _currentRunMovement.z = _currentMovementInput.y * _runMultiplier;
             _isMovementPressed = _currentMovementInput.x != 0.0f || _currentMovementInput.y != 0.0f;
+        }
+
+        private void OnForwardRoll(InputAction.CallbackContext ctx)
+        {
+           _isSprintForwardRollPressed = ctx.ReadValueAsButton();
         }
 
         #endregion

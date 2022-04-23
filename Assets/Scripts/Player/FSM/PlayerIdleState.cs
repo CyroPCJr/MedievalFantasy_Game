@@ -28,14 +28,7 @@ namespace MedievalFantasyGame.FSM
         {
             if (Ctx.IsMovementPressed)
             {
-                if (Ctx.IsRunPressed)
-                {
-                    SwitchState(Factory.Run());
-                }
-                else
-                {
-                    SwitchState(Factory.Walk());
-                }
+                SwitchState(Ctx.IsRunPressed ? Factory.Run() : Factory.Walk());
             }
         }
 

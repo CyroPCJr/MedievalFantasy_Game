@@ -23,7 +23,8 @@ namespace MedievalFantasyGame.FSM
             CheckSwitchState();
         }
 
-        public override void ExitState() { }
+        public override void ExitState() 
+        { }
 
         public override void CheckSwitchState()
         {
@@ -37,6 +38,8 @@ namespace MedievalFantasyGame.FSM
             }
         }
 
-        public override void InitializeSubState() { }
+        public override void InitializeSubState() 
+        { }
+        
     }
 }

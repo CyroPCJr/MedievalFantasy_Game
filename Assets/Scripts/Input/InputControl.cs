@@ -116,6 +116,15 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SprintForwardRoll"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c360027-32bb-4d33-9218-c56e647f5c66"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -514,36 +523,25 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                     ""action"": ""Run"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf101986-335b-41bb-ac3b-a4d5af2c90c1"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SprintForwardRoll"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
         {
             ""name"": ""Menu"",
             ""id"": ""52ab00ce-06bd-4c99-bcd0-9de6ce91b196"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""01774897-b39d-487a-8f11-f63cbd49c434"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""76856623-11ec-44d0-b796-032b7e3aed55"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": [
@@ -566,9 +564,9 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
         m_Player_MouseControlCamera = m_Player.FindAction("MouseControlCamera", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_SprintForwardRoll = m_Player.FindAction("SprintForwardRoll", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -638,6 +636,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MouseControlCamera;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_SprintForwardRoll;
     public struct PlayerActions
     {
         private @InputControl m_Wrapper;
@@ -652,6 +651,7 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
         public InputAction @MouseControlCamera => m_Wrapper.m_Player_MouseControlCamera;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputAction @SprintForwardRoll => m_Wrapper.m_Player_SprintForwardRoll;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -691,6 +691,9 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                 @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
                 @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @SprintForwardRoll.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintForwardRoll;
+                @SprintForwardRoll.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintForwardRoll;
+                @SprintForwardRoll.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSprintForwardRoll;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -725,6 +728,9 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
                 @Run.started += instance.OnRun;
                 @Run.performed += instance.OnRun;
                 @Run.canceled += instance.OnRun;
+                @SprintForwardRoll.started += instance.OnSprintForwardRoll;
+                @SprintForwardRoll.performed += instance.OnSprintForwardRoll;
+                @SprintForwardRoll.canceled += instance.OnSprintForwardRoll;
             }
         }
     }
@@ -733,12 +739,10 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
     // Menu
     private readonly InputActionMap m_Menu;
     private IMenuActions m_MenuActionsCallbackInterface;
-    private readonly InputAction m_Menu_Newaction;
     public struct MenuActions
     {
         private @InputControl m_Wrapper;
         public MenuActions(@InputControl wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -748,16 +752,10 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_MenuActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_MenuActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -783,9 +781,9 @@ public partial class @InputControl : IInputActionCollection2, IDisposable
         void OnMouseControlCamera(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
+        void OnSprintForwardRoll(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
     }
 }

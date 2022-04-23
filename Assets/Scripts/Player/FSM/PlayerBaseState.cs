@@ -9,9 +9,9 @@ namespace MedievalFantasyGame.FSM
         private PlayerBaseState _currentSuperState;
         private PlayerBaseState _currentSubState;
 
-        protected bool IsRootState { set { _isRootState = value; } }
-        protected PlayerStateMachine Ctx { get { return _ctx; } }
-        protected PlayerFactoryState Factory { get { return _factory; } }
+        protected bool IsRootState { set => _isRootState = value; }
+        protected PlayerStateMachine Ctx => _ctx;
+        protected PlayerFactoryState Factory => _factory;
 
         public PlayerBaseState(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState)
         {
@@ -60,7 +60,7 @@ namespace MedievalFantasyGame.FSM
         {
             _currentSuperState = newSuperState;
         }
-        
+
         protected void SetSubStates(PlayerBaseState newSubState)
         {
             _currentSubState = newSubState;

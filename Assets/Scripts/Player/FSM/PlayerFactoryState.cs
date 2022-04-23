@@ -9,11 +9,13 @@ namespace MedievalFantasyGame.FSM
         run,
         grounded,
         jump,
-        fall
+        fall,
+        sprintForwardRoll
     }
 
     public class PlayerFactoryState
     {
+
         private PlayerStateMachine _context;
         private Dictionary<PlayerStates, PlayerBaseState> _states = new Dictionary<PlayerStates, PlayerBaseState>(6);
         public PlayerFactoryState(PlayerStateMachine currentContext)
@@ -25,6 +27,7 @@ namespace MedievalFantasyGame.FSM
             _states[PlayerStates.run] = new PlayerRunState(_context, this);
             _states[PlayerStates.jump] = new PlayerJumpState(_context, this);
             _states[PlayerStates.fall] = new PlayerFallState(_context, this);
+            _states[PlayerStates.sprintForwardRoll] = new PlayerSprintForwardRoll(_context, this);
         }
 
         public PlayerBaseState Idle()
@@ -55,6 +58,11 @@ namespace MedievalFantasyGame.FSM
         public PlayerBaseState Fall()
         {
             return _states[PlayerStates.fall];
+        }
+
+        public PlayerBaseState SprintForwardRoll()
+        {
+            return _states[PlayerStates.sprintForwardRoll];
         }
 
     }

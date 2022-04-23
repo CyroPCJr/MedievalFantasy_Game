@@ -10,9 +10,7 @@ namespace MedievalFantasyGame.FSM
         public PlayerGroundedState(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         {
             IsRootState = true;
-            
         }
-
 
         public override void EnterState()
         {
@@ -25,7 +23,8 @@ namespace MedievalFantasyGame.FSM
             CheckSwitchState();
         }
 
-        public override void ExitState() { }
+        public override void ExitState() 
+        { }
 
         public override void CheckSwitchState()
         {
