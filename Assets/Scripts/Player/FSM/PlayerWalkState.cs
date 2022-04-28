@@ -18,8 +18,8 @@ namespace MedievalFantasyGame.FSM
 
         public override void UpdateState()
         {
-            Ctx.AppliedMovementX = Ctx.CurrentMovementInput.x;
-            Ctx.AppliedMovementZ = Ctx.CurrentMovementInput.y;
+            Ctx.AppliedMovementX = Ctx.CurrentMovementInput.x * 4.0f;
+            Ctx.AppliedMovementZ = Ctx.CurrentMovementInput.y * 4.0f;
             CheckSwitchState();
         }
 

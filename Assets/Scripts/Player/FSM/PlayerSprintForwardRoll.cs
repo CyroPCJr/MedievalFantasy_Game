@@ -5,6 +5,12 @@ namespace MedievalFantasyGame.FSM
 {
     public class PlayerSprintForwardRoll : PlayerBaseState
     {
+        /*  - Deixar animacao do jeito q esta. Controlar o efeito de rolando por script.
+            - Desativar movimento e deixar a propria animacao fazer o deslocamento do personagem.
+            - Travar input do usuario qdo animacao estiver sendo executada para nao causa efeito de sobreescrita.
+            - Transicoes de rolamento pode ser executado qdo estiver em qualquer estado de maquina.
+        */
+
         public PlayerSprintForwardRoll(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         { }
 
@@ -19,7 +25,6 @@ namespace MedievalFantasyGame.FSM
         public override void EnterState()
         {
             Ctx.Animator.SetBool(Ctx.SprintForwardRollhash, true);
-            //Ctx.StartCoroutine(LerpPosition(Ctx.AppliedMovement * 100.0f, 1.0f));
         }
 
         public override void ExitState()
@@ -32,8 +37,8 @@ namespace MedievalFantasyGame.FSM
 
         public override void UpdateState()
         {
-            Ctx.AppliedMovementX = Ctx.CurrentMovementInput.x * 100.0f;
-            Ctx.AppliedMovementZ = Ctx.CurrentMovementInput.y * 100.0f;
+            //Ctx.AppliedMovementX = Ctx.CurrentMovementInput.x * 100.0f;
+            //Ctx.AppliedMovementZ = Ctx.CurrentMovementInput.y * 100.0f;
 
             CheckSwitchState();
         }

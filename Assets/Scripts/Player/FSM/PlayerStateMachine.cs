@@ -32,7 +32,7 @@ namespace MedievalFantasyGame.FSM
 
         //Jump variable
         private float _initialJumpVelocity = 0.0f;
-        private float _maxJumpHeight = 4.0f;
+        private float _maxJumpHeight = 1.0f;
         private float _maxJumpTime = 0.75f;
 
         #region set variables
@@ -104,7 +104,7 @@ namespace MedievalFantasyGame.FSM
 
         private void Start()
         {
-            _characterController.Move(Time.deltaTime * _appliedMovement);
+            _ = _characterController.Move(Time.deltaTime * _appliedMovement);
         }
 
         private void OnEnable()
