@@ -49,7 +49,7 @@ namespace MedievalFantasyGame.FSM
         public Animator Animator { get { return _animatorController; } }
         public int JumpingHash { get { return _jumpingAniHash; } }
         public int RunningHash { get { return _runningAniHash; } }
-        public int WalkingHash { get { return _walkingAniHash; } }       
+        public int WalkingHash { get { return _walkingAniHash; } }
         public int FallingHash => _fallingAniHash;
         public int SprintForwardRollhash => _sprintFowardRollAniHash;
         public bool IsJumpingPressed { get { return _isJumpPressed; } }
@@ -57,6 +57,7 @@ namespace MedievalFantasyGame.FSM
         public bool IsRunPressed { get { return _isRunPressed; } }
         public bool IsSprintForwardRollPressed => _isSprintForwardRollPressed;
         public float CurrentMovementY { get { return _currentMovement.y; } set { _currentMovement.y = value; } }
+        public Vector3 AppliedMovement { get => _appliedMovement; set => _appliedMovement = value; }
         public float AppliedMovementY { get { return _appliedMovement.y; } set { _appliedMovement.y = value; } }
         public float AppliedMovementX { get { return _appliedMovement.x; } set { _appliedMovement.x = value; } }
         public float AppliedMovementZ { get { return _appliedMovement.z; } set { _appliedMovement.z = value; } }
@@ -147,7 +148,7 @@ namespace MedievalFantasyGame.FSM
 
         private void OnForwardRoll(InputAction.CallbackContext ctx)
         {
-           _isSprintForwardRollPressed = ctx.ReadValueAsButton();
+            _isSprintForwardRollPressed = ctx.ReadValueAsButton();
         }
 
         #endregion
