@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,6 +7,10 @@ namespace MedievalFantasyGame.FSM
 {
     public class PlayerStateMachine : MonoBehaviour
     {
+        [field: SerializeField] public AnimationCurve AnimationCurve { get; private set; }
+        private bool _isDodging;
+        public float DodgeTimer { get; private set; } = 0.0f;
+
         private InputControl _playerInputActions;
         private CharacterController _characterController;
         private Animator _animatorController;
@@ -15,13 +21,12 @@ namespace MedievalFantasyGame.FSM
         private bool _isMovementPressed = false;
         private bool _isRunPressed = false;
         private bool _isJumpPressed = false;
-        private bool _isSprintForwardRollPressed = false;
-
+        
         // string hashes
         private int _walkingAniHash = 0;
         private int _runningAniHash = 0;
         private int _jumpingAniHash = 0;
-        private int _fallingAniHash = 0;
+        
         private int _sprintFowardRollAniHash = 0;
 
         private const float _rotationPerFrame = 15.0f;
@@ -50,12 +55,13 @@ namespace MedievalFantasyGame.FSM
         public int JumpingHash { get { return _jumpingAniHash; } }
         public int RunningHash { get { return _runningAniHash; } }
         public int WalkingHash { get { return _walkingAniHash; } }
-        public int FallingHash => _fallingAniHash;
+        public int FallingHash {get; private set; } = 0;
+        public int DodgeHash { get; private set; } = 0;
         public int SprintForwardRollhash => _sprintFowardRollAniHash;
         public bool IsJumpingPressed { get { return _isJumpPressed; } }
         public bool IsMovementPressed { get { return _isMovementPressed; } }
         public bool IsRunPressed { get { return _isRunPressed; } }
-        public bool IsSprintForwardRollPressed => _isSprintForwardRollPressed;
+        public bool IsSprintForwardRollPressed {get; private set; }
         public float CurrentMovementY { get { return _currentMovement.y; } set { _currentMovement.y = value; } }
         public Vector3 AppliedMovement { get => _appliedMovement; set => _appliedMovement = value; }
         public float AppliedMovementY { get { return _appliedMovement.y; } set { _appliedMovement.y = value; } }
@@ -82,9 +88,8 @@ namespace MedievalFantasyGame.FSM
             _walkingAniHash = Animator.StringToHash("isWalking");
             _runningAniHash = Animator.StringToHash("isRunning");
             _jumpingAniHash = Animator.StringToHash("isJumping");
-            _fallingAniHash = Animator.StringToHash("isFalling");
-            _sprintFowardRollAniHash = Animator.StringToHash("isSprintForwardRoll");
-
+            FallingHash = Animator.StringToHash("isFalling");
+            DodgeHash = Animator.StringToHash("isDodge");
             // Input Actions
             _playerInputActions.Player.Movement.started += OnMovement;
             _playerInputActions.Player.Movement.performed += OnMovement;
@@ -104,6 +109,7 @@ namespace MedievalFantasyGame.FSM
 
         private void Start()
         {
+            setDodgeVariables();
             _ = _characterController.Move(Time.deltaTime * _appliedMovement);
         }
 
@@ -148,7 +154,7 @@ namespace MedievalFantasyGame.FSM
 
         private void OnForwardRoll(InputAction.CallbackContext ctx)
         {
-            _isSprintForwardRollPressed = ctx.ReadValueAsButton();
+            IsSprintForwardRollPressed = ctx.ReadValueAsButton();
         }
 
         #endregion
@@ -158,6 +164,12 @@ namespace MedievalFantasyGame.FSM
             float timeToApex = _maxJumpTime / 2.0f;
             _gravity = (-2.0f * _maxJumpHeight) / Mathf.Pow(timeToApex, 2.0f);
             _initialJumpVelocity = (2.0f * _maxJumpHeight) / timeToApex;
+        }
+
+        private void setDodgeVariables()
+        {
+            Keyframe dodgeLastFrame = AnimationCurve[AnimationCurve.length - 1];
+            DodgeTimer = dodgeLastFrame.time;
         }
 
         private void HandleRotation()

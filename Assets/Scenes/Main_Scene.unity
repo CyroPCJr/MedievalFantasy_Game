@@ -148,11 +148,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3561622903240865343, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000001708818
+      value: 0.000000017088176
       objectReference: {fileID: 0}
     - target: {fileID: 3561622903240865343, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000002013392
+      value: -0.0000000020133915
       objectReference: {fileID: 0}
     - target: {fileID: 3561622903298238742, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -188,11 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3561622903900858664, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017100044
+      value: 0.000000017100042
       objectReference: {fileID: 0}
     - target: {fileID: 3561622903900858664, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.00000000201196
+      value: -0.000000002011959
       objectReference: {fileID: 0}
     - target: {fileID: 3561622903900858671, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: near clip plane
@@ -284,11 +284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3561622905205140351, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008560945
+      value: -0.000000008560947
       objectReference: {fileID: 0}
     - target: {fileID: 3561622905205140351, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -8.515279e-10
+      value: 8.5152807e-10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: affbac112f355c648aac2fe78f70ee79, type: 3}
@@ -882,6 +882,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d392ef595577ad41840ac00b43fc99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <AnimationCurve>k__BackingField:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1318360978
 GameObject:
   m_ObjectHideFlags: 0

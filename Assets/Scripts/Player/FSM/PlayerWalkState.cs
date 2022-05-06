@@ -36,6 +36,10 @@ namespace MedievalFantasyGame.FSM
             {
                 SwitchState(Factory.Run());
             }
+            else if (Ctx.IsSprintForwardRollPressed)
+            {
+                SwitchState(Factory.SprintForwardRoll());
+            }
         }
 
         public override void InitializeSubState() 

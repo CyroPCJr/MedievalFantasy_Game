@@ -59,6 +59,7 @@ namespace MedievalFantasyGame.FSM
             Ctx.CurrentMovementY = Ctx.Gravity;
             Ctx.AppliedMovementY = Ctx.Gravity;
         }
+        
     }
 
 }
