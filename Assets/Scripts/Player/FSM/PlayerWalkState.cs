@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace MedievalFantasyGame.FSM
 {
@@ -23,7 +20,7 @@ namespace MedievalFantasyGame.FSM
             CheckSwitchState();
         }
 
-        public override void ExitState() 
+        public override void ExitState()
         { }
 
         public override void CheckSwitchState()
@@ -42,8 +39,8 @@ namespace MedievalFantasyGame.FSM
             }
         }
 
-        public override void InitializeSubState() 
+        public override void InitializeSubState()
         { }
-        
+
     }
 }

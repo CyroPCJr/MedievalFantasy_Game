@@ -21,12 +21,12 @@ namespace MedievalFantasyGame.FSM
         private bool _isMovementPressed = false;
         private bool _isRunPressed = false;
         private bool _isJumpPressed = false;
-        
+
         // string hashes
         private int _walkingAniHash = 0;
         private int _runningAniHash = 0;
         private int _jumpingAniHash = 0;
-        
+
         private int _sprintFowardRollAniHash = 0;
 
         private const float _rotationPerFrame = 15.0f;
@@ -55,13 +55,13 @@ namespace MedievalFantasyGame.FSM
         public int JumpingHash { get { return _jumpingAniHash; } }
         public int RunningHash { get { return _runningAniHash; } }
         public int WalkingHash { get { return _walkingAniHash; } }
-        public int FallingHash {get; private set; } = 0;
+        public int FallingHash { get; private set; } = 0;
         public int DodgeHash { get; private set; } = 0;
         public int SprintForwardRollhash => _sprintFowardRollAniHash;
         public bool IsJumpingPressed { get { return _isJumpPressed; } }
         public bool IsMovementPressed { get { return _isMovementPressed; } }
         public bool IsRunPressed { get { return _isRunPressed; } }
-        public bool IsSprintForwardRollPressed {get; private set; }
+        public bool IsSprintForwardRollPressed { get; private set; }
         public float CurrentMovementY { get { return _currentMovement.y; } set { _currentMovement.y = value; } }
         public Vector3 AppliedMovement { get => _appliedMovement; set => _appliedMovement = value; }
         public float AppliedMovementY { get { return _appliedMovement.y; } set { _appliedMovement.y = value; } }
@@ -110,7 +110,7 @@ namespace MedievalFantasyGame.FSM
         private void Start()
         {
             setDodgeVariables();
-            _ = _characterController.Move(Time.deltaTime * _appliedMovement);
+            UpdateMovement(AppliedMovement);
         }
 
         private void OnEnable()
@@ -127,7 +127,7 @@ namespace MedievalFantasyGame.FSM
         {
             HandleRotation();
             _currentState.UpdateStates();
-            _characterController.Move(Time.deltaTime * _appliedMovement);
+            UpdateMovement(AppliedMovement);
         }
 
         #region callback handler function to set the player input
@@ -185,6 +185,8 @@ namespace MedievalFantasyGame.FSM
                 transform.rotation = Quaternion.Slerp(currentRotation, targetRotation, _rotationPerFrame * Time.deltaTime);
             }
         }
+
+        public void UpdateMovement(Vector3 direction) => _characterController.Move(Time.deltaTime * direction);
 
     }
 }

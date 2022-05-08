@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MedievalFantasyGame.FSM
@@ -9,7 +7,6 @@ namespace MedievalFantasyGame.FSM
         public PlayerJumpState(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         {
             IsRootState = true;
-            
         }
 
         public override void EnterState()

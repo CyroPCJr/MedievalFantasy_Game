@@ -43,11 +43,11 @@ namespace MedievalFantasyGame.FSM
             while (timer < Ctx.DodgeTimer)
             {
                 float speed = Ctx.AnimationCurve.Evaluate(timer);
+                Ctx.UpdateMovement(speed * Ctx.AppliedMovement);
                 timer += Time.deltaTime;
                 yield return null;
             }
-            Ctx.AppliedMovementX *= timer * 15.0f;
-            Ctx.AppliedMovementZ *= timer * 15.0f;
+
             _isDodging = false;
         }
 
