@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace MedievalFantasyGame.FSM
 {
@@ -23,7 +20,7 @@ namespace MedievalFantasyGame.FSM
             CheckSwitchState();
         }
 
-        public override void ExitState() 
+        public override void ExitState()
         { }
 
         public override void CheckSwitchState()
@@ -32,7 +29,8 @@ namespace MedievalFantasyGame.FSM
             if (Ctx.IsJumpingPressed)
             {
                 SwitchState(Factory.Jump());
-            }else if (!Ctx.CharacterController.isGrounded)
+            }
+            else if (!Ctx.CharacterController.isGrounded)
             {
                 SwitchState(Factory.Fall());
             }
@@ -59,7 +57,7 @@ namespace MedievalFantasyGame.FSM
             Ctx.CurrentMovementY = Ctx.Gravity;
             Ctx.AppliedMovementY = Ctx.Gravity;
         }
-        
+
     }
 
 }

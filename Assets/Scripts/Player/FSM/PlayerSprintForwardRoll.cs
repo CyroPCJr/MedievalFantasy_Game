@@ -5,14 +5,14 @@ namespace MedievalFantasyGame.FSM
 {
     public class PlayerSprintForwardRoll : PlayerBaseState
     {
-        private bool _isDodging = true;
+        //private bool _isDodging = true;
 
         public PlayerSprintForwardRoll(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         { }
 
         public override void CheckSwitchState()
         {
-            if (!_isDodging)
+            if (!Ctx.IsDodging)
             {
                 SwitchState(Factory.Run());
                 SwitchState(Factory.Walk());
@@ -37,7 +37,7 @@ namespace MedievalFantasyGame.FSM
 
         private IEnumerator Dodge()
         {
-            _isDodging = true;
+            Ctx.IsDodging = true;
             float timer = 0.0f;
             Ctx.Animator.SetTrigger(Ctx.DodgeHash);
             while (timer < Ctx.DodgeTimer)
@@ -48,7 +48,7 @@ namespace MedievalFantasyGame.FSM
                 yield return null;
             }
 
-            _isDodging = false;
+            Ctx.IsDodging = false;
         }
 
     }

@@ -56,7 +56,7 @@ namespace MedievalFantasyGame.FSM
         public float Gravity { get; private set; } = Physics.gravity.y;
         public Vector2 CurrentMovementInput { get { return _currentMovementInput; } }
         public float DodgeTimer { get; private set; } = 0.0f;
-
+        public bool IsDodging = false;
         #endregion
         private void Awake()
         {
@@ -119,7 +119,10 @@ namespace MedievalFantasyGame.FSM
 
         private void OnJump(InputAction.CallbackContext ctx)
         {
-            IsJumpingPressed = ctx.ReadValueAsButton();
+            if (!IsDodging)
+            {
+                IsJumpingPressed = ctx.ReadValueAsButton();
+            }
         }
 
         private void OnRun(InputAction.CallbackContext ctx)
