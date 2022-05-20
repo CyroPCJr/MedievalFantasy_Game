@@ -59,17 +59,15 @@ namespace MedievalFantasyGame.FSM
 
         public void HandleGravity()
         {
-            bool isFalling = Ctx.CurrentMovementY <= 0.0f || !Ctx.IsJumpingPressed;
-            float fallingMultiplier = 2.0f;
-            if (isFalling)
+            float previousYVelocity = Ctx.CurrentMovementY;
+            if (Ctx.CurrentMovementY <= 0.0f || !Ctx.IsJumpingPressed)
             {
-                float previousYVelocity = Ctx.CurrentMovementY;
+                float fallingMultiplier = 2.0f;
                 Ctx.CurrentMovementY = Ctx.CurrentMovementY + (Ctx.Gravity * fallingMultiplier * Time.deltaTime);
                 Ctx.AppliedMovementY = Mathf.Max((previousYVelocity + Ctx.CurrentMovementY) * 0.5f, -20.0f);
             }
             else
             {
-                float previousYVelocity = Ctx.CurrentMovementY;
                 Ctx.CurrentMovementY = Ctx.CurrentMovementY + (Ctx.Gravity * Time.deltaTime);
                 Ctx.AppliedMovementY = (previousYVelocity + Ctx.CurrentMovementY) * 0.5f;
             }
