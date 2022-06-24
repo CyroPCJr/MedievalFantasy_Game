@@ -31,7 +31,7 @@ namespace MedievalFantasyGame.FSM
             else if (Ctx.IsMovementPressed && !Ctx.IsRunPressed)
             {
                 SwitchState(Factory.Walk());
-            } 
+            }
             else if (Ctx.IsSprintForwardRollPressed)
             {
                 SwitchState(Factory.SprintForwardRoll());
