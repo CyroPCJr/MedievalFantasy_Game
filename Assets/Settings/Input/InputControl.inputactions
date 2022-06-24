@@ -2,16 +2,17 @@
     "name": "InputControl",
     "maps": [
         {
-            "name": "Gameplay",
+            "name": "Player",
             "id": "7cb8e380-1857-4024-a9d2-3351a3701216",
             "actions": [
                 {
-                    "name": "Move",
-                    "type": "Button",
+                    "name": "Movement",
+                    "type": "Value",
                     "id": "c0e646ed-ea64-45fa-9ac9-2fd11f1aafb7",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jump",
@@ -19,7 +20,8 @@
                     "id": "346db534-3bc3-49ee-9e03-f9c2c2c98b85",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Attack",
@@ -27,7 +29,8 @@
                     "id": "27b038f3-e914-4442-b203-b718486f290e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Pause",
@@ -35,7 +38,8 @@
                     "id": "ed2d8222-be06-4a9c-ada0-616c1e456d43",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_1",
@@ -43,7 +47,8 @@
                     "id": "42caf9d0-810d-4d5c-8b01-d0e2c8e6b934",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Skill_2",
@@ -51,7 +56,8 @@
                     "id": "1be84a59-309a-47e0-b421-2643d2f4dc3d",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "RotateCamera",
@@ -59,7 +65,8 @@
                     "id": "64e8e379-c7d4-4504-9449-6abee6e56f1f",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MouseControlCamera",
@@ -67,7 +74,8 @@
                     "id": "efb00ce6-7676-4479-928f-66c6a39c0e00",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Interact",
@@ -75,7 +83,26 @@
                     "id": "0edde680-bf12-4f42-9a31-3fd3067d5b6e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Run",
+                    "type": "Button",
+                    "id": "247cea19-2ac5-4313-849d-7edd9826f369",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SprintForwardRoll",
+                    "type": "Button",
+                    "id": "6c360027-32bb-4d33-9218-c56e647f5c66",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -86,7 +113,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -97,7 +124,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -108,7 +135,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -119,7 +146,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -130,7 +157,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -141,7 +168,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -152,7 +179,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -163,7 +190,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -174,7 +201,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -185,7 +212,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -196,7 +223,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -207,7 +234,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -218,7 +245,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -229,7 +256,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -240,7 +267,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardOrGamepad",
-                    "action": "Move",
+                    "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -463,35 +490,58 @@
                     "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3684da0-b4ef-4044-ae0a-2479e3f36828",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardOrGamepad",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52c6f706-363f-491f-9ac2-050e01f80ed5",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Run",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf101986-335b-41bb-ac3b-a4d5af2c90c1",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SprintForwardRoll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de5e3656-292d-443e-aead-9ae1bf1e7920",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SprintForwardRoll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
         {
             "name": "Menu",
             "id": "52ab00ce-06bd-4c99-bcd0-9de6ce91b196",
-            "actions": [
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "01774897-b39d-487a-8f11-f63cbd49c434",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "76856623-11ec-44d0-b796-032b7e3aed55",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "New action",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
