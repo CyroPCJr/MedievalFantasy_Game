@@ -5,8 +5,8 @@ namespace MedievalFantasyGame.FSM
 {
     public class PlayerSprintForwardRoll : PlayerBaseState
     {
-        //private bool _isDodging = true;
 
+        private Coroutine _DodgeCoroutine;
         public PlayerSprintForwardRoll(PlayerStateMachine currentContext, PlayerFactoryState playerFactoryState) : base(currentContext, playerFactoryState)
         { }
 
@@ -21,11 +21,13 @@ namespace MedievalFantasyGame.FSM
 
         public override void EnterState()
         {
-            Ctx.StartCoroutine(Dodge());
+            _DodgeCoroutine  = Ctx.StartCoroutine(Dodge());
         }
 
         public override void ExitState()
-        { }
+        { 
+            Ctx.StopCoroutine(_DodgeCoroutine);
+        }
 
         public override void InitializeSubState()
         { }
@@ -43,7 +45,7 @@ namespace MedievalFantasyGame.FSM
             while (timer < Ctx.DodgeTimer)
             {
                 float speed = Ctx.AnimationCurve.Evaluate(timer);
-                Ctx.UpdateMovement(speed * Ctx.AppliedMovement);
+                Ctx.UpdateCharacterControllerMovement(speed * Ctx.AppliedMovement);
                 timer += Time.deltaTime;
                 yield return null;
             }

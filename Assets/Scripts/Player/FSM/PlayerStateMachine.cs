@@ -5,27 +5,21 @@ namespace MedievalFantasyGame.FSM
 {
     public class PlayerStateMachine : MonoBehaviour
     {
-        [field: SerializeField] public AnimationCurve AnimationCurve { get; private set; }
 
+        [field: SerializeField] public PlayerSO.PlayerDataSO PlayerSo;
+        [field: SerializeField] public AnimationCurve AnimationCurve { get; private set; }
+        [field: System.NonSerialized] public bool IsDodging = false;
         private InputControl _playerInputActions;
 
         private Vector2 _currentMovementInput = Vector2.zero;
         private Vector3 _currentMovement = Vector3.zero;
-        private Vector3 _currentRunMovement = Vector3.zero;
+        //private Vector3 _currentRunMovement = Vector3.zero;
         private Vector3 _appliedMovement = Vector3.zero;
 
         private const float _rotationPerFrame = 15.0f;
-        private const float _runMultiplier = 4.0f;
 
         //Jump variable
-        private float _initialJumpVelocity = 0.0f;
-        private float _maxJumpHeight = 1.0f;
-        private float _maxJumpTime = 0.75f;
-
-        #region set variables
-        PlayerFactoryState _states;
-
-        #endregion
+        private const float _maxJumpTime = 0.75f;
 
         #region getters and setters
 
@@ -46,17 +40,17 @@ namespace MedievalFantasyGame.FSM
         public bool IsRunPressed { get; private set; } = false;
         public bool IsSprintForwardRollPressed { get; private set; } = false;
 
-        public float CurrentMovementY { get { return _currentMovement.y; } set { _currentMovement.y = value; } }
+        public float CurrentMovementY { get => _currentMovement.y; set => _currentMovement.y = value; }
         public Vector3 AppliedMovement { get => _appliedMovement; set => _appliedMovement = value; }
         public float AppliedMovementY { get { return _appliedMovement.y; } set { _appliedMovement.y = value; } }
         public float AppliedMovementX { get { return _appliedMovement.x; } set { _appliedMovement.x = value; } }
         public float AppliedMovementZ { get { return _appliedMovement.z; } set { _appliedMovement.z = value; } }
-        public float RunMultiplier { get { return _runMultiplier; } }
-        public float InitialJumpVelocity { get { return _initialJumpVelocity; } }
+
+        public float InitialJumpVelocity { get; private set; } = 0.0f;
         public float Gravity { get; private set; } = Physics.gravity.y;
-        public Vector2 CurrentMovementInput { get { return _currentMovementInput; } }
+
         public float DodgeTimer { get; private set; } = 0.0f;
-        public bool IsDodging = false;
+
         #endregion
         private void Awake()
         {
@@ -65,7 +59,7 @@ namespace MedievalFantasyGame.FSM
             Animator = GetComponentInChildren<Animator>();
 
             // setup states
-            _states = new PlayerFactoryState(this);
+            PlayerFactoryState _states = new PlayerFactoryState(this);
             CurrentState = _states.Grounded();
             CurrentState.EnterState();
 
@@ -90,12 +84,12 @@ namespace MedievalFantasyGame.FSM
             _playerInputActions.Player.SprintForwardRoll.canceled += OnForwardRoll;
 
             setJumpVariables();
+            setDodgeVariables();
         }
 
         private void Start()
         {
-            setDodgeVariables();
-            UpdateMovement(AppliedMovement);
+            UpdateCharacterControllerMovement(AppliedMovement);
         }
 
         private void OnEnable()
@@ -112,17 +106,14 @@ namespace MedievalFantasyGame.FSM
         {
             HandleRotation();
             CurrentState.UpdateStates();
-            UpdateMovement(AppliedMovement);
+            UpdateCharacterControllerMovement(AppliedMovement);
         }
 
         #region callback handler function to set the player input
 
         private void OnJump(InputAction.CallbackContext ctx)
         {
-            if (!IsDodging)
-            {
-                IsJumpingPressed = ctx.ReadValueAsButton();
-            }
+            IsJumpingPressed = ctx.ReadValueAsButton();
         }
 
         private void OnRun(InputAction.CallbackContext ctx)
@@ -135,8 +126,6 @@ namespace MedievalFantasyGame.FSM
             _currentMovementInput = ctx.ReadValue<Vector2>();
             _currentMovement.x = _currentMovementInput.x;
             _currentMovement.z = _currentMovementInput.y;
-            _currentRunMovement.x = _currentMovementInput.x * _runMultiplier;
-            _currentRunMovement.z = _currentMovementInput.y * _runMultiplier;
             IsMovementPressed = _currentMovementInput.x != 0.0f || _currentMovementInput.y != 0.0f;
         }
 
@@ -150,8 +139,8 @@ namespace MedievalFantasyGame.FSM
         private void setJumpVariables()
         {
             float timeToApex = _maxJumpTime / 2.0f;
-            Gravity = (-2.0f * _maxJumpHeight) / Mathf.Pow(timeToApex, 2.0f);
-            _initialJumpVelocity = (2.0f * _maxJumpHeight) / timeToApex;
+            Gravity = (-2.0f * PlayerSo.MaxJumpHeight) / Mathf.Pow(timeToApex, 2.0f);
+            InitialJumpVelocity = (2.0f * PlayerSo.MaxJumpHeight) / timeToApex;
         }
 
         private void setDodgeVariables()
@@ -162,7 +151,7 @@ namespace MedievalFantasyGame.FSM
 
         private void HandleRotation()
         {
-            if (IsMovementPressed)
+            if (IsMovementPressed && !IsDodging)
             {
                 Vector3 positionToLookAt;
                 positionToLookAt.x = _currentMovement.x;
@@ -174,7 +163,13 @@ namespace MedievalFantasyGame.FSM
             }
         }
 
-        public void UpdateMovement(Vector3 direction) => CharacterController.Move(Time.deltaTime * direction);
+        public void UpdateCharacterControllerMovement(Vector3 direction) => CharacterController.Move(Time.deltaTime * direction);
+
+        public void UpdateAppliedMovement(float speed)
+        {
+            AppliedMovementX = _currentMovementInput.x * speed;
+            AppliedMovementZ = _currentMovementInput.y * speed;
+        }
 
     }
 }

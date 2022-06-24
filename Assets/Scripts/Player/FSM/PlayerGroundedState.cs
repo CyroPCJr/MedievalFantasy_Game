@@ -26,7 +26,7 @@ namespace MedievalFantasyGame.FSM
         public override void CheckSwitchState()
         {
             // if player is grounded and jump is pressed, switch to jump state
-            if (Ctx.IsJumpingPressed)
+            if (Ctx.IsJumpingPressed && !Ctx.IsDodging)
             {
                 SwitchState(Factory.Jump());
             }
