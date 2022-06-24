@@ -21,11 +21,11 @@ namespace MedievalFantasyGame.FSM
 
         public override void EnterState()
         {
-            _DodgeCoroutine  = Ctx.StartCoroutine(Dodge());
+            _DodgeCoroutine = Ctx.StartCoroutine(Dodge());
         }
 
         public override void ExitState()
-        { 
+        {
             Ctx.StopCoroutine(_DodgeCoroutine);
         }
 
