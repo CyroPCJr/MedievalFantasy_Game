@@ -1006,6 +1006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d392ef595577ad41840ac00b43fc99a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerSo: {fileID: 11400000, guid: bd983a233559e7b45b7976394f847185, type: 2}
   <AnimationCurve>k__BackingField:
     serializedVersion: 2
     m_Curve:
